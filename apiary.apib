@@ -11,6 +11,14 @@ Naskladnění
 
 ### Vytvoření [POST]
 
+Endpoint slouží pro vytvoření skladových zásob. 
+
+```
+name 
+```
+aa
+
+
 + Request (application/json)
 
         [
@@ -61,6 +69,22 @@ Naskladnění
                 }
             }
         ]
+
+## Movement [/movement/{sku}]
+
+Log - Pohyby skladových zásob
+
+### List
+
++ Response 200 (application/json)
+        [
+            {
+                "data": {}
+                "meta": {
+                }
+            }
+        ]
+
 
 ## Stock [/stock/aggregate/]
 
