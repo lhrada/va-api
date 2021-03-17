@@ -3,6 +3,8 @@ HOST: https://stock.services.viaaurea.eu/stock/api/
 
 # Skladové zásoby
 
+doc [blueprint](https://github.com/apiaryio/api-blueprint/blob/master/API%20Blueprint%20Specification.md#def-schema-section)
+
 Služba pro práci se skladovými zásobami na eshopech. Umožňuje...
 
 ## Inbound [/inbound/]
@@ -78,6 +80,15 @@ objekt `query`.
 
 ### List [GET]
 
++ Parameters
+    + sku (enum[string])
+
+        SKU
+
+        + Members
+            + `A`
+            + `B`
+            + `C`
 
 + Response 200 (application/json)
 
@@ -120,7 +131,9 @@ objekt `query`.
               }
             }
         ]
-
+    + Attributes (object)
+        + data (object) - Message to the world
+        + meta (object) - Message to the world
 
 ## Stock [/stock/aggregate/]
 
