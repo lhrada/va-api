@@ -1,9 +1,66 @@
 FORMAT: 1A
-HOST: https://localhost:8443/api/
+HOST: https://stock.services.viaaurea.eu/stock/api/
 
-# Lukáš Hradecký
+# Skladové zásoby
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Služba pro práci se skladovými zásobami na eshopech. Umožňuje...
+
+## Inbound [/inbound/]
+
+Naskladnění
+
+### Vytvoření [POST]
+
++ Request (application/json)
+
+        [
+            {
+              "name":"Název přepravy",
+              "warehouse":"Brno",
+              "client":"Via Aurea",
+              "status":"accepted",
+              "identifier": "ASN 2021-03-07-00001",
+              "data": "{}",
+              "items": [
+                {
+                  "sku": "PEN_001",
+                  "qty": 20,
+                  "purchasePrice": 12.898,
+                  "currency": "CZK"
+                },
+                {
+                  "sku": "PEN_001",
+                  "qty": 10,
+                  "purchasePrice": 13.598,
+                  "currency": "CZK"
+                },
+                {
+                  "sku": "PEN_002",
+                  "qty": 115,
+                  "purchasePrice": 102.015,
+                  "currency": "CZK"
+                }
+              ]
+            }
+
+        ]
++ Response 200 (application/json)
+    
+        [
+            {
+                "date": "2021-"
+            }
+        ]
+
++ Response 500 (application/json)
+
+        [
+            {
+                "errorr": {
+                    "message": "Chyba"
+                }
+            }
+        ]
 
 ## Stock [/stock/aggregate/]
 
