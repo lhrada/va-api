@@ -7,6 +7,80 @@ doc [blueprint](https://github.com/apiaryio/api-blueprint/blob/master/API%20Blue
 
 Služba pro práci se skladovými zásobami na eshopech. Umožňuje...
 
+
+
+
+
+## Movement [/movement/{sku}/]
+`sku := PEN_001`
+
+Log pohybů skladových zásob `sku`. Pro stránkování lze použít objekt `paginator`. Pro filtraci lze požít 
+objekt `query`.
+
+### List [GET]
+
++ Parameters
+    + sku (enum[string])
+
+        SKU
+
+        + Members
+            + `A`
+            + `B`
+            + `C`
+
++ Response 200 (application/json)
+
+
+        [
+            {
+              "data": {
+                "date": "2021-03-17T12:47:16.223940Z",
+                "items": [
+                    {
+                        "date":{"date": "2021-03-16 13:36:46.000000", "timezone_type": 3, "timezone": "UTC"},
+                        "sku": "PEN_001",
+                        "qtyAbsolute": null,
+                        "qtyRelative": 20,
+                        "warehouse": "Brno",
+                        "client": "Via Aurea",
+                        "inboundId": 38,
+                        "outboundId": null,
+                        "note": null
+                    },
+                    {
+                        "date":{"date": "2021-03-16 15:36:13.000000", "timezone_type": 3, "timezone": "UTC"},
+                        "sku": "PEN_001",
+                        "qtyAbsolute": null,
+                        "qtyRelative": -2,
+                        "warehouse": "Brno",
+                        "client": "Via Aurea",
+                        "inboundId": null,
+                        "outboundId": 96,
+                        "note": "Create outbound"
+                    }
+                ]
+              },
+              "meta": {
+                "paginator": {
+                  "itemsPerPage": 100,
+                  "page": 1,
+                  "count": 0
+                },
+                "query": []
+              }
+            }
+        ]
+
+    + Attributes (object)
+        + data (object) - Objekt s daty
+            + date (string) - Datum odpovědi
+            + items (object) - Pole s daty
+                + item (object) - data
+                    + date (string) - Datum pohybu
+        + meta (object) - Message to the world
+
+
 ## Inbound [/inbound/]
 
 Naskladnění
@@ -71,69 +145,6 @@ aa
                 }
             }
         ]
-
-## Movement [/movement/{sku}/]
-`sku := PEN_001`
-
-Log pohybů skladových zásob `sku`. Pro stránkování lze použít objekt `paginator`. Pro filtraci lze požít 
-objekt `query`.
-
-### List [GET]
-
-+ Parameters
-    + sku (enum[string])
-
-        SKU
-
-        + Members
-            + `A`
-            + `B`
-            + `C`
-
-+ Response 200 (application/json)
-
-        [
-            {
-              "data": {
-                "date": "2021-03-17T12:47:16.223940Z",
-                "items": [
-                    {
-                        "date":{"date": "2021-03-16 13:36:46.000000", "timezone_type": 3, "timezone": "UTC"},
-                        "sku": "PEN_001",
-                        "qtyAbsolute": null,
-                        "qtyRelative": 20,
-                        "warehouse": "Brno",
-                        "client": "Via Aurea",
-                        "inboundId": 38,
-                        "outboundId": null,
-                        "note": null
-                    },
-                    {
-                        "date":{"date": "2021-03-16 15:36:13.000000", "timezone_type": 3, "timezone": "UTC"},
-                        "sku": "PEN_001",
-                        "qtyAbsolute": null,
-                        "qtyRelative": -2,
-                        "warehouse": "Brno",
-                        "client": "Via Aurea",
-                        "inboundId": null,
-                        "outboundId": 96,
-                        "note": "Create outbound"
-                    }
-                ]
-              },
-              "meta": {
-                "paginator": {
-                  "itemsPerPage": 100,
-                  "page": 1,
-                  "count": 0
-                },
-                "query": []
-              }
-            }
-        ]
-    + Attributes (object)
-        + data (object) - Message to the world
-        + meta (object) - Message to the world
 
 ## Stock [/stock/aggregate/]
 
