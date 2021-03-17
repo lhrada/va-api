@@ -70,16 +70,21 @@ aa
             }
         ]
 
-## Movement [/movement/{sku}]
+## Movement [/movement/{sku}/]
+`sku := 42`
 
-Log - Pohyby skladových zásob
+Log pohybů skladových zásob `sku`. Pro stránkování lze použít objekt `paginator`. Pro filtraci lze požít 
+objekt `query`.
 
-### List
+### List [GET]
+
 
 + Response 200 (application/json)
+
         [
             {
-                "data": {}
+                "data": {
+                },
                 "meta": {
                 }
             }
